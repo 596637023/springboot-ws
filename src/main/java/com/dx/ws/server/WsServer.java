@@ -22,24 +22,24 @@ import java.nio.ByteBuffer;
 public class WsServer {
 
     @OnOpen
-    public void onOpen(Session session,@PathParam("msg") String msg) {
-        log.info("{}连接上了说:{}", session.getAsyncRemote(),msg);
-        String reMsg="hello,客户端";
+    public void onOpen(Session session, @PathParam("msg") String msg) {
+        log.info("{}连接上了说:{}", session.getAsyncRemote(), msg);
+        String reMsg = "hello,客户端";
         session.getAsyncRemote().sendText(reMsg);
     }
 
     @OnClose
-    public void onClose(Session session){
-        log.info("{}已下线:",session.getAsyncRemote());
+    public void onClose(Session session) {
+        log.info("{}已下线:", session.getAsyncRemote());
     }
 
     @OnMessage
-    public void onMessage(String msg,Session session){
-        log.info("{}发送消息:{}",session.getAsyncRemote(),msg);
+    public void onMessage(String msg, Session session) {
+        log.info("{}发送消息:{}", session.getAsyncRemote(), msg);
     }
 
     @OnError
-    public void onError (Session session,Throwable error){
-        log.error("{}出现异常:",session.getAsyncRemote(),error);
+    public void onError(Session session, Throwable error) {
+        log.error("{}出现异常:", session.getAsyncRemote(), error);
     }
 }
